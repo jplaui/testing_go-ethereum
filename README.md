@@ -60,10 +60,11 @@ Additionally, you can download the ganache linux appimage [here](https://truffle
 - execute `blocks.go` with `go run blocks.go`
 - execute `gblocks.go` (ganache blocks) with `go run gblocks.go`
 - execute `transactions.go` with `go run transactions.go`
-- (create blocks with transactions first in ganache) execute `gtransactions.go` with `go run gtransactions.go`
+- (create blocks with transactions first in ganache) execute `gtransactions.go` with `go run gtransactions.go`. make sure to update the block hash and transaction hash and set a sufficiently low block number if you have not send many transactions (e.g. script works if you call `gtransaction_raw_create.go` and `gtransaction_raw_sendreate.go` first).
 - execute `gtransaction_raw_create.go` (ganache, edit the file and make sure you are using a private key of an account registered in ganache genesis) with `go run gtransaction_raw_create.go`
 - copy the output of `go run gtransaction_raw_create.go` and paste it into `rawTx` in the file `gtransaction_raw_sendreate.go` and execute `go run gtransaction_raw_sendreate.go`. be aware, if you call `go run gtransaction_raw_sendreate.go` another time, make sure to create new transaction bytes with a new nonce, otherwise, replayed nonce values from a same account will be rejected.
-- you can query and inspect your transaction 
+- (optional) you can query and inspect your transaction if you are using ganache
+- execute `gtransfer_eth.go` with `go run gtransfer_eth.go`, make sure to update the private key and address of the recipient if you wanna see the eth transfer in ganache.
 
 #### smartcontracts folder
 

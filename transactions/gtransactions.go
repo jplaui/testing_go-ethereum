@@ -12,12 +12,12 @@ import (
 )
 
 func main() {
-	client, err := ethclient.Dial("http://localhost:8545")
+	client, err := ethclient.Dial("http://localhost:7545")
 	if err != nil {
 		log.Fatal("client dial", err)
 	}
 
-	blockNumber := big.NewInt(2)
+	blockNumber := big.NewInt(1)
 	block, err := client.BlockByNumber(context.Background(), blockNumber)
 	if err != nil {
 		log.Fatal("blockbynumber:", err)
@@ -49,7 +49,7 @@ func main() {
 		fmt.Println("transaction receipt (1 indicates success,  0 fail):", receipt.Status) // 1
 	}
 
-	blockHash := common.HexToHash("0x9e8751ebb5069389b855bba72d94902cc385042661498a415979b7b6ee9ba4b9")
+	blockHash := common.HexToHash("0xaa3e27f9c6f6c604fa37e50081b8f0e23e59c7fb87238d7ef34079186a6b7ac6")
 	count, err := client.TransactionCount(context.Background(), blockHash)
 	if err != nil {
 		log.Fatal("transaction count for blockhash:", err)
@@ -64,7 +64,7 @@ func main() {
 		fmt.Println("tx in block hash hex:", tx.Hash().Hex()) // 0x5d49fcaa394c97ec8a9c3e7bd9e8388d420fb050a52083ca52ff24b3b65bc9c2
 	}
 
-	txHash := common.HexToHash("0x5d49fcaa394c97ec8a9c3e7bd9e8388d420fb050a52083ca52ff24b3b65bc9c2")
+	txHash := common.HexToHash("0xd678bd8b11c636b38221c402ff4b29e1ddfb9604ca57368cd9a4df4446582941")
 	tx, isPending, err := client.TransactionByHash(context.Background(), txHash)
 	if err != nil {
 		log.Fatal("transaction by hash error:", err)
