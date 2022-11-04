@@ -65,9 +65,12 @@ Additionally, you can download the ganache linux appimage [here](https://truffle
 - copy the output of `go run gtransaction_raw_create.go` and paste it into `rawTx` in the file `gtransaction_raw_sendreate.go` and execute `go run gtransaction_raw_sendreate.go`. be aware, if you call `go run gtransaction_raw_sendreate.go` another time, make sure to create new transaction bytes with a new nonce, otherwise, replayed nonce values from a same account will be rejected.
 - (optional) you can query and inspect your transaction if you are using ganache
 - execute `gtransfer_eth.go` with `go run gtransfer_eth.go`, make sure to update the private key and address of the recipient if you wanna see the eth transfer in ganache.
+- TODO: execute `gtransfer_token.go` with TODO
+- TODO: execute `block_subscribe.go` with `go run block_subscribe.go`
 
 #### smartcontracts folder
-
+- initially run `go mod tidy`
+- 
 
 
 ### Useful links
