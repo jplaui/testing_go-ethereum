@@ -2,9 +2,10 @@
 
 ### Goethereumbook
 The link to the documentation can be found here: https://goethereumbook.org/en/ and https://github.com/miguelmota/ethereum-development-with-go-book
-Below, you find the documentation on how scripts can be executed per topic. Always make sure to jump into the respective folders before executing the commands. e.g. jump into the `client` folder before runnnig and then execute commands like `go run main.go`.
 
-This time, system dependencies relied on:
+Below, you find the documentation on how scripts can be executed per topic. Always make sure to jump into the respective folders before executing the commands. e.g. jump into the `client` folder before executing commands like `go run main.go`.
+
+This time, system dependencies rely on:
 ```
 $$$ solc --version
 solc, the solidity compiler commandline interface
@@ -30,7 +31,15 @@ Operating System: linux
 GOPATH=/home/jp/Documents/coding/go
 GOROOT=
 ```
-
+(arch install truffle by cloning the aur truffle [github](https://aur.archlinux.org/truffle.git), switch into folder an install with `makepkg -si`)
+```
+$$$ truffle
+```
+(arch install ganache-bin binary from aur [repo](https://aur.archlinux.org/ganache-bin.git), switch into cloned folder and run `makepkg -si` to install)
+```
+ganache binary version: ganache-2.5.4
+```
+Additionally, you can download the ganache linux appimage [here](https://trufflesuite.com/ganache/) to get [ganache-ui](https://github.com/trufflesuite/ganache-ui). After making the appimage executable by running `chmod +x ganache-2.5.4-linux-x86_64.AppImage`, you can start it with `./ganache-2.5.4-linux-x86_64.AppImage`. When using the appimage of ganache, make sure to use the url and accounts associated with the ganache network configured with appImage (to get the same accounts, paste in the mnemonic phrase when creating a new workspace). Ganache UI can be linked to a truffle work environment for better debugging when developing smart contracts...
 
 #### client folder
 - install ganache with `npm install -g ganache-cli`, check with `ganache-cli`
@@ -48,8 +57,17 @@ GOROOT=
 
 #### transactions folder
 - init the folder with `go mod tidy`
+- execute `blocks.go` with `go run blocks.go`
+- execute `gblocks.go` (ganache blocks) with `go run gblocks.go`
+- execute `transactions.go` with `go run transactions.go`
+- (create blocks with transactions first in ganache) execute `gtransactions.go` with `go run gtransactions.go`
+- execute `gtransaction_raw_create.go` (ganache, edit the file and make sure you are using a private key of an account registered in ganache genesis) with `go run gtransaction_raw_create.go`
+- copy the output of `go run gtransaction_raw_create.go` and paste it into `rawTx` in the file `gtransaction_raw_sendreate.go` and execute `go run gtransaction_raw_sendreate.go`. be aware, if you call `go run gtransaction_raw_sendreate.go` another time, make sure to create new transaction bytes with a new nonce, otherwise, replayed nonce values from a same account will be rejected.
+- you can query and inspect your transaction 
 
 #### smartcontracts folder
+
+
 
 ### Useful links
 - Block explorer Etherscan [here](https://etherscan.io)
