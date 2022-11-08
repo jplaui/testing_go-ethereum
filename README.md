@@ -70,7 +70,37 @@ Additionally, you can download the ganache linux appimage [here](https://truffle
 
 #### smartcontracts folder
 - initially run `go mod tidy`
-- 
+- compile solidity and create ABIs of contracts inside `contracts` folder with `solc --optimize --abi ./contracts/BalanceCheck.sol -o build`
+- next, create the bin files with `solc --optimize --bin ./contracts/MySmartContract.sol -o build`
+- create `api` folder with `mkdir api`
+- next create the go file wrapper with `abigen --abi=./build/BalanceCheck.abi --bin=./build/BalanceCheck.bin --pkg=api --out=./api/BalanceCheck.go`
+- next, by running main `go run main -deploy true` with flag for contract deployment returns output:
+```
+2022/11/08 12:23:15 deployed contract address: 0x0665C95eeA208ed16bdF9f50e762383FC6A77701
+2022/11/08 12:23:15 deployed contract transaction hash in hex: 0x5a3e3d79d0bb8133f06a533bce96c1ad11b38db81056c05d188425d8397795e0
+2022/11/08 12:23:15 instance: &{{0xc000005180} {0xc000005180} {0xc000005180}}
+```
+running it a second time returns:
+```
+2022/11/08 12:27:12 nonce= 3
+2022/11/08 12:27:12 deployed contract address: 0x0e93A5BF00452E3b43Cc7641C8387d1AE6997f5B
+2022/11/08 12:27:12 deployed contract transaction hash in hex: 0xfe14127ae2a41e9271ace699e494ecf223bc5f5461b413e21502010697e9f22b
+2022/11/08 12:27:12 instance: &{{0xc0000f2280} {0xc0000f2280} {0xc0000f2280}}
+```
+running `go run main.go -deploystore true` returns:
+```
+contract address: 0x4A31ECe693fB614935eFB337034F9C79efEC03B5
+contract transaction hash hex: 0x20c8d04883accec6f657bb40d33c49e1190e8ec6a5be4c4c9fcd947df92bc905
+```
+- run `go run main.go -loadstore true` loads the store contract
+- run `go run main.go -querystore true` to query the store contract version
+- to set/write a value into the store, use `go run main.go -writestore true`
+- get the store contract bytecode with `go run main.go -codestore true`
+
+
+#### events
+- initially start with `go mod tidy` inside the folder
+-
 
 
 ### Useful links
