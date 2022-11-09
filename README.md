@@ -100,16 +100,14 @@ contract transaction hash hex: 0x20c8d04883accec6f657bb40d33c49e1190e8ec6a5be4c4
 
 #### events
 - initially start with `go mod tidy` inside the folder
--
-
+- code backup of [goethereumbook](https://goethereumbook.org/)
+- following *goethereumbook* until here is good to get started. from here, it makes sense to move into app directions you want to build.
 
 ### Useful links
 - Block explorer Etherscan [here](https://etherscan.io)
-- File sotrage Swarm [here]()
-- P2P messaging Whisper [here]()
+- File sotrage Swarm [here](https://ethersphere.github.io/swarm-home/)
 - Ganache [here](https://trufflesuite.com/ganache/)
-- Infura [here]()
--
+- Infura [here](https://www.infura.io/)
 
 ### Running your own local network with geth
 
